@@ -1,0 +1,7 @@
+    if st.session_state.you.eyeColor != "":
+        with st.container(horizontal = True, horizontal_alignment = "left"):
+            if st.button("blue"):
+                st.session_state.you.setEyes = "blue"
+            if st.button("")
+    else:
+        st.write("Your eyes are the color " + st.session_state.you.eyeColor)
