@@ -8,36 +8,39 @@ if "you" not in st.session_state:
     st.session_state.you = Player("brown","brown","medium")
 
 
-st.write("You're standing in a tavern, with no recollection of who you were or how you got here.")
-st.write("What do you do?")
+#here we are setting visible rooms
+rooms = ["hallwayFound", "outsideFound", "forestFound", "clearingFound", "bedroomFound", "caveFound", "bigTreeFound"]
+for room in rooms:
+    if room not in st.session_state:
+        st.session_state[room] = False
 
-if st.button("Take a closer look at what you're carrying."):
-    st.write("Inventory unlocked!")
+#and here we are setting up the rooms that are pages
+tavern = st.Page("pages/tavern.py", title = "Tavern", icon = "🍺", default = True)
+upstairs_hallway = st.Page("pages/upstairs_hallway.py", title = "Hallway")
+outside_tavern = st.Page("pages/outside_tavern.py", title = "Outside the Tavern")
+forest = st.Page("pages/forest.py", title = "A Quiet Forest")
+clearing = st.Page("pages/clearing.py", title = "An Empty Forest Clearing")
+bedroom = st.Page("pages/bedroom.py", title = "Bedroom")
+big_tree= st.Page("pages/big_tree.py", title = "A Very Big Tree")
+cave = st.Page("pages/cave.py", title = "A Mysterious Cave")
 
-if st.button("Look around at the tavern."):
-    st.write("The tavern is pretty empty. There's only a few other customers in here besides you, and they all appear to be minding their own business.\nThe bartender hums quietly to themself as they wipe down one of the counters. In the corner, the neon sign begins to flicker.")
+visible = [tavern]
 
-if st.button("Find a mirror."):
-    st.write("There's a dingy mirror in the corner. You take a look at yourself in it.")
-    
-    st.session_state.you.setEyes = st.text_input("Your eyes are the color ")
-    st.session_state.you.setHair = st.text_input("Your hair is the color ")
-    st.session_state.you.setHairLength = st.text_input("Your hair is (length)")
+if st.session_state.hallwayFound:
+    visible.append(upstairs_hallway)
+if st.session_state.outsideFound:
+    visible.append(outside_tavern)
+if st.session_state.forestFound:
+    visible.append(forest)
+if st.session_state.clearingFound:
+    visible.append(clearing)
+if st.session_state.bedroomFound:
+    visible.append(bedroom)
+if st.session_state.bigTreeFound:
+    visible.append(big_tree)
+if st.session_state.caveFound:
+    visible.append(cave)
 
-    if st.button("You've finished looking at yourself."):
-        st.rerun()
+st.navigation(visible).run()
 
 
-#after a bit more exploring
-
-if st.button("Head up the stairs."):
-    if st.session_state.hallwayFound == False:
-        st.write("New Area Unlocked: Hallway!")
-    st.session_state.hallwayFound = True
-
-#or
-
-if st.button("Go outside."):
-    if st.session_state.outsideFound == False:
-        st.write("New Area Unlocked: Hallway!")
-    st.session_state.outsideFound = True
