@@ -1,0 +1,13 @@
+make YOU a player object
+
+
+Standing in the tavern
+Look around tavern and look at inventory -> inventory unlocked
+Find a mirror -> customize character options
+
+Use coins to buy a drink
+Read letter
+
+If user wants to access inventory, use st.dialog
+
+Every time the user walks to another room, new page is found and made visible
