@@ -1,10 +1,11 @@
 class Player:
 
-    def __init__(self, eyeColor, hairColor, hairLength):
-        self.eyeColor = eyeColor
-        self.hairColor = hairColor
-        self.hairLength = hairLength
+    def __init__(self):
+        self.eyeColor = ""
+        self.hairColor = ""
+        self.hairLength = ""
         self.inventory = ["satchel", "weird key", "letter", "hunting knife"]
+        self.set = False
 
 
     def setEyes(self, color):

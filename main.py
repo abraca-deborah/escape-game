@@ -5,7 +5,7 @@ from Player import Player
 st.title("A Dark and Stormy Night")
 
 if "you" not in st.session_state:
-    st.session_state.you = Player("brown","brown","medium")
+    st.session_state.you = Player()
 
 
 #here we are setting visible rooms
@@ -42,5 +42,3 @@ if st.session_state.caveFound:
     visible.append(cave)
 
 st.navigation(visible).run()
-
-
